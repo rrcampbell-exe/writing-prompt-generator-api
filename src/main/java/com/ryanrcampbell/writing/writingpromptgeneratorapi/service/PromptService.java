@@ -1,74 +1,35 @@
 package com.ryanrcampbell.writing.writingpromptgeneratorapi.service;
 
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.CompletableFuture;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 @Service
 public class PromptService {
-  @Async
-    public CompletableFuture<String> fetchContext() {
-        // Simulate an API call
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(1000); // Simulate delay
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            return "pigs can fly";
-        });
-    }
+    public String fetchPrompt() {
+        String apiKey = System.getenv("OPEN_AI_API_KEY");
+        if (apiKey == null || apiKey.isEmpty()) {
+            throw new IllegalStateException("API_KEY environment variable is not set");
+        }
+        String urlString = "https://api.openai.com/v1/chat/completions";
+        String jsonInputString = "{ \"model\": \"gpt-4o-mini\", \"store\": true, \"messages\": [{\"role\": \"user\", \"content\": \"generate a writing prompt that introduces some context and features a character who must perform some task before a deadline or face consequences. the prompt should be a single sentence of no more than 50 words and follow a structure similar to 'in a world where (blank), (character) must (act) before (deadline) or (consequence)\"}] }";
 
-    @Async
-    public CompletableFuture<String> fetchCharacter() {
-        // Simulate another API call
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(800); // Simulate delay
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            return "a hubristic chancellor";
-        });
-    }
-
-    @Async
-    public CompletableFuture<String> fetchAction() {
-        // Simulate another API call
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(800); // Simulate delay
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            return "eat all of the danishes in the university cafeteria";
-        });
-    }
-
-    @Async
-    public CompletableFuture<String> fetchDeadline() {
-        // Simulate another API call
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(800); // Simulate delay
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            return "noon";
-        });
-    }
-
-    @Async
-    public CompletableFuture<String> fetchConsequence() {
-        // Simulate another API call
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(800); // Simulate delay
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-            return "the state will withhold all funding for scientific research";
-        });
+        try {
+            URI url = new URI(urlString);
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(url)
+                    .header("Content-Type", "application/json; utf-8")
+                    .header("Authorization", "Bearer " + apiKey)
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonInputString))
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return response.body();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
