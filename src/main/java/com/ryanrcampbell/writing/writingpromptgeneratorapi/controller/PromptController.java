@@ -2,12 +2,12 @@ package com.ryanrcampbell.writing.writingpromptgeneratorapi.controller;
 
 import com.ryanrcampbell.writing.writingpromptgeneratorapi.service.PromptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.CompletableFuture;
-
 @RestController
+@CrossOrigin(origins = {"http://ryanrcampbell.com", "https://ryanrcampbell.com", "http://localhost:5173", "http://localhost:8080"})
 public class PromptController {
     private final PromptService promptService;
 
@@ -17,14 +17,7 @@ public class PromptController {
     }
 
     @GetMapping("/prompts")
-    public CompletableFuture<String> prompt() {
-        // Trigger both async calls in parallel
-        CompletableFuture<String> titleFuture = promptService.fetchPromptTitle();
-        CompletableFuture<String> descriptionFuture = promptService.fetchPromptDescription();
-
-        // Combine results when both futures are complete
-        return titleFuture.thenCombine(descriptionFuture, (title, description) -> {
-            return String.format("Title: %s\nDescription: %s", title, description);
-        });
+    public String prompt() {
+        return promptService.fetchPrompt();
     }
 }
