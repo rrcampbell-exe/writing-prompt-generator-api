@@ -8,13 +8,16 @@ import java.net.http.HttpResponse;
 
 @Service
 public class PromptService {
-    public String fetchPrompt() {
+    public String fetchPrompt(String genre) {
         String apiKey = System.getenv("OPEN_AI_API_KEY");
         if (apiKey == null || apiKey.isEmpty()) {
             throw new IllegalStateException("API_KEY environment variable is not set");
         }
         String urlString = "https://api.openai.com/v1/chat/completions";
-        String jsonInputString = "{ \"model\": \"gpt-4o-mini\", \"store\": true, \"messages\": [{\"role\": \"user\", \"content\": \"generate a writing prompt that introduces some context and features a character who must perform some task before a deadline or face consequences. the prompt should be a single sentence of no more than 50 words and follow a structure similar to 'in a world where (blank), (character) must (act) before (deadline) or (consequence)\"}] }";
+        String basePrompt = "writing prompt that introduces some context and features a character who must perform some task before a deadline or face consequences. the prompt should be a single sentence of no more than 50 words and follow a structure similar to 'in a world where (blank), (character) must (act) before (deadline) or (consequence)'";
+        String prompt = genre != null && !genre.isEmpty() ? "generate a " + genre + " " + basePrompt : "generate a " + basePrompt;
+        
+        String jsonInputString = String.format("{ \"model\": \"gpt-4o-mini\", \"store\": true, \"messages\": [{\"role\": \"user\", \"content\": \"%s\"}] }", prompt);
 
         try {
             URI url = new URI(urlString);
