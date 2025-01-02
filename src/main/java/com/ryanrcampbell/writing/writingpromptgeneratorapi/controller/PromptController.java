@@ -16,7 +16,7 @@ public class PromptController {
         this.promptService = promptService;
     }
 
-    @GetMapping("/prompts")
+    @GetMapping("/api/v1/prompts")
     public String prompt() {
         return promptService.fetchPrompt();
     }
