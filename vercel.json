@@ -16,8 +16,7 @@
   ],
   "functions": {
     "api/*": {
-      "runtime": "java",
-      "handler": "target/writing-prompt-generator-api-0.0.1-SNAPSHOT.jar"
+      "runtime": "java"
     }
   }
 }
