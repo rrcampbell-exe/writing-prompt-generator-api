@@ -1,22 +1,14 @@
 {
-  "builds": [
-    {
-      "src": "pom.xml",
-      "use": "@vercel/static",
-      "config": {
-        "buildCommand": "./mvnw package -DskipTests"
-      }
+  "functions": {
+    "api/*": {
+      "runtime": "java",
+      "handler": "com.ryanrcampbell.writing.writingpromptgeneratorapi.WritingPromptGeneratorApiApplication::main"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
       "dest": "target/writing-prompt-generator-api-0.0.1-SNAPSHOT.jar"
     }
-  ],
-  "functions": {
-    "api/*": {
-      "runtime": "java"
-    }
-  }
+  ]
 }
