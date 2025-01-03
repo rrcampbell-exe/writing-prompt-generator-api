@@ -2,7 +2,10 @@
   "builds": [
     {
       "src": "pom.xml",
-      "use": "@vercel/java"
+      "use": "@vercel/static",
+      "config": {
+        "buildCommand": "./mvnw package -DskipTests"
+      }
     }
   ],
   "routes": [
