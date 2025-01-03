@@ -1,8 +1,7 @@
 {
   "functions": {
     "api/*": {
-      "runtime": "java",
-      "handler": "com.ryanrcampbell.writing.writingpromptgeneratorapi.WritingPromptGeneratorApiApplication::main"
+      "runtime": "java"
     }
   },
   "routes": [
