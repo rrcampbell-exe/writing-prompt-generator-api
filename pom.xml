@@ -47,6 +47,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.ryanrcampbell.writing.writingpromptgeneratorapi.WritingPromptGeneratorApiApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
