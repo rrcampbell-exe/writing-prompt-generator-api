@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "pom.xml",
+      "use": "@vercel/java"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "target/writing-prompt-generator-api-0.0.1-SNAPSHOT.jar"
+    }
+  ]
+}
