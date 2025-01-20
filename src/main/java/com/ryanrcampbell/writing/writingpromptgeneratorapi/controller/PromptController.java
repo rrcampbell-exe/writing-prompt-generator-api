@@ -8,7 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"http://ryanrcampbell.com", "https://ryanrcampbell.com", "http://localhost:5173", "http://localhost:8080"})
+@CrossOrigin(origins = {
+    "http://ryanrcampbell.com",
+    "https://ryanrcampbell.com",
+    "http://localhost:5173",
+    "http://localhost:8080",
+    "https://writing-prompt-generator-api.fly.dev"
+})
 public class PromptController {
     private final PromptService promptService;
 
