@@ -5,7 +5,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the .jar file into the container
-COPY target/writing-prompt-generator-api-0.0.1-SNAPSHOT.jar app.jar
+COPY target/*.jar app.jar
 
 # Expose the port your app will run on
 EXPOSE 8080
