@@ -18,7 +18,7 @@ public class PromptController {
     }
 
     @GetMapping("/api/v1/prompts")
-    public String prompt(@RequestParam(value = "genre", required = false) String genre) {
-        return promptService.fetchPrompt(genre);
+    public String prompt(@RequestParam(value = "genre", required = false) String genre, @RequestParam(value = "theme", required = false) String theme) {
+        return promptService.fetchPrompt(genre, theme);
     }
 }
