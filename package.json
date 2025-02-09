@@ -1,0 +1,36 @@
+{
+  "name": "writing-prompt-generator-api",
+  "version": "1.0.0",
+  "description": "A Node API for generating writing prompts.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "test",
+    "start": "npm run build && nodemon dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rrcampbell-exe/writing-prompt-generator-api.git"
+  },
+  "author": "Ryan R. Campbell",
+  "license": "Copyright Ryan R. Campbell 2025",
+  "bugs": {
+    "url": "https://github.com/rrcampbell-exe/writing-prompt-generator-api/issues"
+  },
+  "homepage": "https://github.com/rrcampbell-exe/writing-prompt-generator-api#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.7.3"
+  }
+}
