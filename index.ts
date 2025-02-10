@@ -6,10 +6,10 @@ import router from './router.js'
 dotenv.config()
 
 const app: Application = express()
-const PORT: number = parseInt(process.env.PORT as string, 10) || 5173
+const PORT: number = parseInt(process.env.PORT as string, 10) || 8080
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'http://localhost:8080'
 }))
 
 app.use(express.json())
