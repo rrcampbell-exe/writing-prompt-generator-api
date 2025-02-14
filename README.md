@@ -1,6 +1,6 @@
 # Writing Prompt Generator API
 
-[![license-MIT-blue.png](https://img.shields.io/badge/%C2%A9%202025-Ryan%20R.%20Campbell%20and%20R.R.%20Campbell,%20LLC-red)](#License)
+[![license-copyright-red.png](https://img.shields.io/badge/%C2%A9%202025-Ryan%20R.%20Campbell%20and%20R.R.%20Campbell,%20LLC-red)](#License)
 
 ## Description
 A Node API for generating writing prompts based on the [logline structure](https://www.r-on-everything.com/p/the-logline-your-novel-in-50-words-or-fewer) "In a world where [x], [character] must [act] before [deadline] or [consequence]."
