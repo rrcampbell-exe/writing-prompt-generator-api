@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "test",
+    "test": "vitest",
     "start": "npm run build && nodemon dist/index.js"
   },
   "repository": {
@@ -31,6 +31,8 @@
     "@types/node": "^22.10.5",
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
-    "typescript": "^5.7.3"
+    "supertest": "^7.0.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   }
 }
