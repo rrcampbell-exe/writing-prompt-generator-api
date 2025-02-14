@@ -88,9 +88,7 @@ router.get('/prompts', rateLimiter, validateApiKey, async (req: Request, res: Re
     res.status(200).json({ response: writingPrompt })
   } catch (error) {
     console.error('Error:', error)
-    if (error.message.includes('Rate limit exceeded')) {
-      res.status(429).json({ error: error.message })
-    } else if (error.message.includes('Easy, eager writer')) {
+    if (error.message.includes('Rate limit exceeded') || error.message.includes('Easy, eager writer')) {
       res.status(429).json({ error: error.message })
     } else {
       res.status(500).json({ error: 'The writing prompt generator has cramped up. Please try again later.' })
