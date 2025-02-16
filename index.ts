@@ -12,7 +12,7 @@ app.use(cors({
   origin: [
     'http://localhost:8080',
     'http://localhost:5173',
-    /\.writing-prompt-generator\.com$/
+    /^(https?:\/\/)?(www\.)?writing-prompt-generator\.com$/
   ]
 }))
 
